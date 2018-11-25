@@ -1,4 +1,6 @@
 package edu.dcccd.trans.entity;
 
-public class SelectedDay {
-}
+import lombok.Data;
+import java.util.List;
+@Data
+public class SelectedDay { private List<String> selectedDays; }

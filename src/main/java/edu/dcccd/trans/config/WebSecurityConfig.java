@@ -1,5 +1,5 @@
 package edu.dcccd.trans.config;
-import edu.dcccd.trans.service.UserDetailsServiceImpl;
+import edu.dcccd.trans.service.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,11 +11,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    private UserDetailServiceImpl userDetailsService;
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -33,8 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/", "/login", "/logout", "/register").permitAll();
         // /transaction page requires login as ROLE_USER or ROLE_ADMIN.
         // If no login, it will redirect to /login page.
-        http.authorizeRequests().antMatchers("/transaction").access("hasAnyRole('ROLE_USER',
-        'ROLE_ADMIN')");
+        http.authorizeRequests().antMatchers("/transaction").access("hasAnyRole('ROLE_USER')");
         // For ADMIN only.
         http.authorizeRequests().antMatchers("/h2-console/**").access("hasRole('ROLE_ADMIN')");
         // When the user has logged in as XX.

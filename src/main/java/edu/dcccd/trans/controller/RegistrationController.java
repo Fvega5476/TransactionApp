@@ -1,5 +1,10 @@
 package edu.dcccd.trans.controller;
 
+import edu.dcccd.trans.entity.RegistrationForm;
+import edu.dcccd.trans.entity.Role;
+import edu.dcccd.trans.entity.User;
+import edu.dcccd.trans.repository.RoleRepository;
+import edu.dcccd.trans.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -21,7 +26,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String processRegistration( RegistrationForm form, Model model) {
+    public String processRegistration(RegistrationForm form, Model model) {
         if(!form.getPassword().equals(form.getConfirm())) {
             model.addAttribute("message", "Passwords is not match.");
             return "403";

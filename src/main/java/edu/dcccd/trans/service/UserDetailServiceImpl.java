@@ -13,7 +13,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public
+class UserDetailServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
     @Autowired

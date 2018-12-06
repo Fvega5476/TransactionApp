@@ -30,7 +30,7 @@ public class TransactionController {
         model.addAttribute("appName",appName);
         return "home";
     }
-    @GetMapping("/transaction")
+    @GetMapping(value = {"/", "/home"})
     public String loadTransactionPage(Model model){
         model.addAttribute("transactionForm", new Transaction());
         model.addAttribute("days",getDays());

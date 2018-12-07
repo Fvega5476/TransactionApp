@@ -1,6 +1,6 @@
 package edu.dcccd.trans.controller;
+
 import edu.dcccd.trans.service.JokeService;
-import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,8 +11,9 @@ public class RESTController {
     public RESTController(JokeService jokeService) {
         this.jokeService = jokeService;
     }
+
     @GetMapping(value = ("/joke"))
-    public Class<? extends Value> getJoke() throws Exception { // consume a REST service
+    public String getJoke() throws Exception { // consume a REST service
         return jokeService.getJoke("Craig", "Walls");
     }
 }

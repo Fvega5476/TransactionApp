@@ -26,6 +26,6 @@ public class TransApplicationTests {
     @Test
     public void testDBall() {
         Iterable<Transaction> it = repository.findAll();
-        it.forEach(t -> log.info("\n" + t.toString()));
+        //it.forEach(t -> log.info("\n" + t.toString()));
     }
 }
